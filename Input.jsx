@@ -8,7 +8,7 @@ function InputStars(props) {
   function SetRating() {
     let rating = star;
     inputClass = rating > 5 ? "red" : "primary";
-    props.sendData(rating);
+    rating <= 5 ? props.sendData(rating) : props.sendData(0);
   }
 
   return (
