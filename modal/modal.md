@@ -1,2 +1,0 @@
-Modal
-A simple Modal :)
