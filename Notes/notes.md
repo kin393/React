@@ -54,6 +54,8 @@ Dynamic Routing
 useParams is a hook which is a function which gives us the parameters from url which can be used for dynamic routing
 
 
+<img width="1263" alt="lifecycle" src="https://user-images.githubusercontent.com/34294833/220131531-c3d94d1c-c944-4577-8c3c-99fd295847ea.png">
+
 
 
 
