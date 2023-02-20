@@ -169,5 +169,8 @@ Code reuse, logic and bootstrap abstraction.
 Render hijacking.
 State abstraction and manipulation.
 Props manipulation.
+
+
+https://www.freecodecamp.org/news/redux-for-beginners-the-brain-friendly-guide-to-redux/
  
 
