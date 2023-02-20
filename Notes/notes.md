@@ -173,4 +173,13 @@ Props manipulation.
 
 https://www.freecodecamp.org/news/redux-for-beginners-the-brain-friendly-guide-to-redux/
  
+https://www.freecodecamp.org/news/introduction-to-react-hooks/
+
+https://www.valentinog.com/blog/hooks/
+
+https://dmitripavlutin.com/react-usecallback/
+
+https://dmitripavlutin.com/react-usememo-hook/
+
+https://github.com/sudheerj/reactjs-interview-questions#what-are-pure-components
 
