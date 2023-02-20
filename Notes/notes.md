@@ -53,13 +53,96 @@ Outlet is a Component which will be filled with Children configuration
 Dynamic Routing
 useParams is a hook which is a function which gives us the parameters from url which can be used for dynamic routing
 
+<h1>LifeCycle Methods</h1>
+
+The component lifecycle has three distinct lifecycle phases:
+
+Mounting: The component is ready to mount in the browser DOM. This phase covers initialization from constructor(), getDerivedStateFromProps(), render(), and componentDidMount() lifecycle methods.
+
+Updating: In this phase, the component gets updated in two ways, sending the new props and updating the state either from setState() or forceUpdate(). This phase covers getDerivedStateFromProps(), shouldComponentUpdate(), render(), getSnapshotBeforeUpdate() and componentDidUpdate() lifecycle methods.
+
+Unmounting: In this last phase, the component is not needed and gets unmounted from the browser DOM. This phase includes componentWillUnmount() lifecycle method.
+
+It's worth mentioning that React internally has a concept of phases when applying changes to the DOM. They are separated as follows
+
+Render The component will render without any side effects. This applies to Pure components and in this phase, React can pause, abort, or restart the render.
+
+Pre-commit Before the component actually applies the changes to the DOM, there is a moment that allows React to read from the DOM through the getSnapshotBeforeUpdate().
+
+Commit React works with the DOM and executes the final lifecycles respectively componentDidMount() for mounting, componentDidUpdate() for updating, and componentWillUnmount() for unmounting.
 
 <img width="1263" alt="lifecycle" src="https://user-images.githubusercontent.com/34294833/220131531-c3d94d1c-c944-4577-8c3c-99fd295847ea.png">
+
+<img width="1263" alt="lifecycle" src="https://user-images.githubusercontent.com/34294833/220156975-834e690a-3eb4-41b8-ac17-449e71309fad.png">
+
+
 
 
 What are Pure Components?
 React.PureComponent is exactly the same as React.Component except that it handles the shouldComponentUpdate() method for you. When props or state changes, PureComponent will do a shallow comparison on both props and state. Component on the other hand won't compare current props and state to next out of the box. Thus, the component will re-render by default whenever shouldComponentUpdate is called. In functional components we use React.memo() API. React.memo() is a higher-order component. It takes a React component as its first argument and returns a special type of React component that allows the renderer to render the component while memoizing the output. Therefore, if the component’s props are shallowly equal, the React.memo() component will bail out the updates.
+
+What is React Fiber?
+Fiber is the new reconciliation engine or reimplementation of core algorithm in React v16. The goal of React Fiber is to increase its suitability for areas like animation, layout, gestures, ability to pause, abort, or reuse work and assign priority to different types of updates; and new concurrency primitives.
+
+⬆ Back to Top
+
+What is the main goal of React Fiber?
+The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
+
+from documentation
+
+Its main goals are:
+
+Ability to split interruptible work in chunks.
+Ability to prioritize, rebase and reuse work in progress.
+Ability to yield back and forth between parents and children to support layout in React.
+Ability to return multiple elements from render().
+Better support for error boundaries.
+
+
+What are controlled components?
+A component that controls the input elements within the forms on subsequent user input is called Controlled Component, i.e, every state mutation will have an associated handler function.
+
+For example, to write all the names in uppercase letters, we use handleChange as below,
+```
+handleChange(event) {
+  this.setState({value: event.target.value.toUpperCase()})
+}
+```
+
+
+What are uncontrolled components?
+The Uncontrolled Components are the ones that store their own state internally, and you query the DOM using a ref to find its current value when you need it. This is a bit more like traditional HTML.
+
+In the below UserProfile component, the name input is accessed using ref.
+```
+class UserProfile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.input = React.createRef();
+  }
+
+  handleSubmit(event) {
+    alert("A name was submitted: " + this.input.current.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          {"Name:"}
+          <input type="text" ref={this.input} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+```
+In most cases, it's recommend to use controlled components to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
  
- 
+
  
 
