@@ -75,7 +75,23 @@ Commit React works with the DOM and executes the final lifecycles respectively c
 
 <img width="1263" alt="lifecycle" src="https://user-images.githubusercontent.com/34294833/220156975-834e690a-3eb4-41b8-ac17-449e71309fad.png">
 
+<h2>What is the recommended ordering of methods in component class?</h2>
+Recommended ordering of methods from mounting to render stage:
 
+static methods
+constructor()
+getChildContext()
+componentWillMount()
+componentDidMount()
+componentWillReceiveProps()
+shouldComponentUpdate()
+componentWillUpdate()
+componentDidUpdate()
+componentWillUnmount()
+click handlers or event handlers like onClickSubmit() or onChangeDescription()
+getter methods for render like getSelectReason() or getFooterContent()
+optional render methods like renderNavigation() or renderProfilePicture()
+render()
 
 
 What are Pure Components?
@@ -143,6 +159,17 @@ class UserProfile extends React.Component {
 ```
 In most cases, it's recommend to use controlled components to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
  
+<h1>What are Higher-Order Components?</h1>
+A higher-order component (HOC) is a function that takes a component and returns a new component. Basically, it's a pattern that is derived from React's compositional nature.
 
+We call them pure components because they can accept any dynamically provided child component but they won't modify or copy any behavior from their input components.
+
+const EnhancedComponent = higherOrderComponent(WrappedComponent);
+HOC can be used for many use cases:
+
+Code reuse, logic and bootstrap abstraction.
+Render hijacking.
+State abstraction and manipulation.
+Props manipulation.
  
 
