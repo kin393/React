@@ -100,8 +100,6 @@ React.PureComponent is exactly the same as React.Component except that it handle
 What is React Fiber?
 Fiber is the new reconciliation engine or reimplementation of core algorithm in React v16. The goal of React Fiber is to increase its suitability for areas like animation, layout, gestures, ability to pause, abort, or reuse work and assign priority to different types of updates; and new concurrency primitives.
 
-⬆ Back to Top
-
 What is the main goal of React Fiber?
 The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
 
